@@ -27,7 +27,7 @@
         <button class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 py-4 px-8 shadow-lg w-[25%]">
             Log In
         </button>
-        <a href="?ADD_A_ROUTE_HERE" class="inline-block mx-auto bg-transparent hover:underline text-gray-600 font-extrabold my-2 py-2 lg:py-4 px-6">
+        <a href="?ADD_A_ROUTE_HERE" class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 py-4 px-8 shadow-lg w-[25%]">
             Visit Home Site
         </a>
     </div>

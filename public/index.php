@@ -33,3 +33,10 @@ require_once PROJECT_DIRECTORY . '/controller/routerController.php';
 
 
 $db = null;
+
+/*
+ * THINGS FOR TOMORROW
+ * Create the DB
+ * Change the names of tables in sql requests
+ * Set up the homepage correctly
+ */

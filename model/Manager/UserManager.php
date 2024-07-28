@@ -22,12 +22,10 @@ class UserManager {
 // ATTEMPT USER LOGIN
     public function login(string $login, string $password) : bool  {
         $login = $this->standardClean($login);
-        // $password = password_hash($password, PASSWORD_DEFAULT); // I ALWAYS FORGET THAT IT IS NOT NECESSARY TO PRE-HASH THE PASSWORD
         $stmt = $this->db->prepare("SELECT * FROM `eco_object_users` WHERE `object_user_login` = :login");
         $stmt->execute([':login' => $login]);
         if ($stmt->rowCount() > 0) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            // the password is hashed for testing as part of password_verify()
             if (password_verify($password, $user['object_user_pass'])) {
                 $_SESSION = $user;
                 unset($_SESSION['object_user_pass']);
