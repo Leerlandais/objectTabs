@@ -19,36 +19,6 @@ class UserManager {
     }
 
 
-// VERIFY IF USER ALREADY EXISTS
-    public function testUserName($login) : bool {
-        $sql = $this->db->prepare("SELECT * FROM eco_object_users WHERE object_user_login = :login");
-        $sql->bindValue(':login', $login);
-        $sql->execute();
-        if ($sql->rowCount() > 0) {
-            return true;
-        }
-        return false;
-    }
-
-// ATTEMPT USER CREATION
-    public function register(string $login, string $password, string $name, string $email) : bool {
-        $login    = $this->standardClean($login);
-        $password = $this->hashPassword($password, PASSWORD_DEFAULT);
-        $name     = $this->standardClean($name);
-        $email    = $this->emailClean($email);
-
-        $stmt = $this->db->prepare("INSERT INTO `eco_object_users`
-                                                    (`object_user_login`,
-                                                     `object_user_pass`,
-                                                     `object_user_name`,
-                                                     `object_user_email`) 
-                                        VALUES (?,?,?,?)");
-        $stmt->execute([$login,$password,$name,$email]);
-        if ($stmt->rowCount() > 0) return true;
-        return false;
-    }
-
-
 // ATTEMPT USER LOGIN
     public function login(string $login, string $password) : bool  {
         $login = $this->standardClean($login);
@@ -87,8 +57,5 @@ class UserManager {
         exit();
     }
 
-    // little test to see if I could correctly call a private function: I can
-    private function hashPassword(string $password): string {
-        return password_hash($password, PASSWORD_DEFAULT);
-    }
+
 } // end class
