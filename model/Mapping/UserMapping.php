@@ -8,7 +8,6 @@ use model\Trait\TraitTestInt;
 use model\Trait\TraitTestString;
 use model\Trait\TraitDateTime;
 use model\Trait\TraitLaundryRoom;
-use DateTime;
 use Exception;
 
 class UserMapping extends AbstractMapping {
