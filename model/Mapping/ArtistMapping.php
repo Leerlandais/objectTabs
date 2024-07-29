@@ -3,7 +3,7 @@
 namespace model\Mapping;
 
 use model\Abstract\AbstractMapping;
-use model\MyPDO;
+
 use Exception;
 
 use model\Trait\TraitTestString;

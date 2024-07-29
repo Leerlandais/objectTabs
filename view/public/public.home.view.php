@@ -16,6 +16,13 @@ var_dump($allArtists);
 <body>
 
 <div class="container mx-auto h-auto">
+    <div class="py-12">
+        <?php if(isset($errorMessage)) {
+            ?>
+            <h2 class="text-4xl text-red-600 text-center"><?=$errorMessage?></h2>
+            <?php
+        }
+        ?>
     <div class="text-center px-3">
         <h1 class="my-4 text-2xl md:text-3xl lg:text-5xl">
             Guitar Tabs
@@ -45,8 +52,14 @@ if (isset($_GET['login'])) {
     <h3 class="text-3xl underline mx-auto">
         Artists
     </h3>
-    <ul>
-        <li>add foreach here</li>
+    <ul class="flex flex-row justify-between mt-6">
+        <?php
+        foreach ($allArtists as $artist) {
+        ?>
+            <a href="?route=artist&artId=<?=$artist->getArtId()?>"><li class="py-1 my-1"><?=html_entity_decode($artist->getArtName())?></li></a>
+        <?php
+        }
+        ?>
     </ul>
 </div>
 </body>

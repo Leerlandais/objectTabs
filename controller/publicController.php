@@ -1,6 +1,7 @@
 <?php
 
 use model\Manager\ArtistManager;
+use model\Mapping\ArtistMapping;
 use model\Manager\UserManager;
 use model\Mapping\UserMapping;
 
