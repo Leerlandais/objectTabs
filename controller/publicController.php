@@ -15,7 +15,6 @@ $allSongs = $songManager->selectAll();
 
 
 
-
 // LOGOUT
 if (isset($_GET["logout"])) {
     $userManager->logout();
@@ -65,6 +64,13 @@ if(isset($_POST["loginUserLogin"],
     }
     header("location: /");
 }
+
+// GET SONGS FOR ONE ARTIST
+if(isset($_GET["route"], $_GET["artId"])
+    && $_GET["route"] == "artist"){
+        $id = $_GET["artId"];
+        $oneArt = $songManager->selectAllByArtistId($id);
+    }
 
 
 $title = "HomePage";
