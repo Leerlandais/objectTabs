@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<div class="container mx-auto h-screen">
+<div class="container mx-auto h-auto">
     <div class="text-center px-3">
         <h1 class="my-4 text-2xl md:text-3xl lg:text-5xl">
             Guitar Tabs
@@ -23,17 +23,32 @@
         <p class="leading-normal text-gray-800 text-base md:text-xl lg:text-2xl mb-8">
             Everything I need in one handy spot
         </p>
-
-        <button class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 py-4 px-8 shadow-lg w-[25%]">
+        <a href="?login">
+            <button class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 py-4 px-8 shadow-lg w-[25%]">
             Log In
-        </button>
-        <a href="?ADD_A_ROUTE_HERE" class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 py-4 px-8 shadow-lg w-[25%]">
+            </button>
+        </a>
+        <a href="https://leerlandais.com" class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 py-4 px-8 shadow-lg w-[25%]">
             Visit Home Site
         </a>
     </div>
 </div>
+<?php
+if (isset($_GET['login'])) {
+    ?>
+    <p>Add login form</p>
+<?php
+}
+?>
 
-
+<div class="container mx-auto h-auto text-center">
+    <h3 class="text-3xl underline mx-auto">
+        Artists
+    </h3>
+    <ul>
+        <li>add foreach here</li>
+    </ul>
+</div>
 </body>
 </html>
 
