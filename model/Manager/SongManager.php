@@ -1,6 +1,7 @@
 <?php
 
 namespace model\Manager;
+use model\Mapping\ArtistMapping;
 use model\Mapping\SongMapping;
 use model\MyPDO;
 
@@ -41,15 +42,23 @@ class SongManager
     }
     public function selectAllByArtistId ($id) : ?array
     {
-        $stmt = $this->db->prepare("SELECT * FROM tab_song WHERE artist_id = ?");
+        $stmt = $this->db->prepare("
+                                    SELECT s.*, a.art_name 
+                                    FROM tab_song s 
+                                    JOIN tab_artist a 
+                                    ON s.artist_id = a.art_id
+                                    WHERE s.artist_id = ?
+                                    ");
         $stmt->execute([$id]);
         if ($stmt->rowCount() === 0) return null;
         $songMapper = $stmt->fetchAll();
         $stmt->closeCursor();
         $songObject = [];
+
         foreach ($songMapper as $art) {
             $songObject[] = new SongMapping($art);
         }
+
         return $songObject;
     }
 }

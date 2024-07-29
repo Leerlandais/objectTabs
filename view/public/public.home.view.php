@@ -68,13 +68,19 @@ if (isset($_GET['login'])) {
     }else if ($_GET['route'] == "artist") {
 ?>
         <div class="container mx-auto h-auto text-center">
-            <h3 class="text-3xl underline mx-auto">
-                Songs
-            </h3>
-            <ul>
                 <?php
+                $i = 0;
                 foreach ($oneArt as $art) {
+                    if($i < 1) {
                     ?>
+            <h3 class="text-3xl underline mx-auto">
+                <?=html_entity_decode($art->getArtName())?>
+            </h3>
+            <?php
+            $i++;
+                    }
+            ?>
+            <ul>
                     <a href="?route=song&songSlug=<?=$art->getSongSlug()?>"><li class="py-1 my-1"><?=html_entity_decode($art->getSongName())?></li></a>
                     <?php
                 }
