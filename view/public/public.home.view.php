@@ -50,11 +50,11 @@ if (isset($_GET['login'])) {
     <?php
     if (!isset($_GET['route'])) {
     ?>
-<div class="container mx-auto h-auto text-center">
+<div class="container mx-auto h-auto text-center w-[50%]">
     <h3 class="text-3xl underline mx-auto">
         Artists
     </h3>
-    <ul class="flex flex-row justify-between mt-6">
+    <ul class="flex flex-row mt-6">
         <?php
         foreach ($allArtists as $artist) {
         ?>
@@ -69,7 +69,7 @@ if (isset($_GET['login'])) {
 ?>
         <div class="container mx-auto h-auto text-center">
             <h3 class="text-3xl underline mx-auto">
-                Artists
+                Songs
             </h3>
             <ul>
                 <?php
@@ -82,8 +82,15 @@ if (isset($_GET['login'])) {
             </ul>
         </div>
     <?php
+    }else if ($_GET['route'] == "song") {
+        foreach ($oneSong as $song) {
+    ?>
+        <pre class="text-center">
+            <?=$song->getTabTab()?>
+        </pre>
+    <?php
+        }
     }
-    if(isset($oneSong)) var_dump($oneSong);
     ?>
 </body>
 </html>
