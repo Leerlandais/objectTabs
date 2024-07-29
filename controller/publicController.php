@@ -1,9 +1,13 @@
 <?php
 
+use model\Manager\ArtistManager;
 use model\Manager\UserManager;
 use model\Mapping\UserMapping;
 
 $userManager = new UserManager($db);
+$artistManager = new ArtistManager($db);
+
+$allArtists = $artistManager->selectAll();
 
 // LOGOUT
 if (isset($_GET["logout"])) {
