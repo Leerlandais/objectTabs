@@ -13,7 +13,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title><?=$title?></title>
 </head>
-<body>
+<body class="bg-gradient-to-r from-gray-300 via-gray-400 to-gray-300">
 
 <div class="container mx-auto h-auto">
     <div class="py-12">
@@ -31,11 +31,11 @@
             Everything I need in one handy spot
         </p>
         <a href="?login">
-            <button class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 py-4 px-8 shadow-lg w-[25%]">
+            <button class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 py-4 px-8 shadow-lg w-[25%] bg-white bg-opacity-50">
             Log In
             </button>
         </a>
-        <a href="https://leerlandais.com" class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 py-4 px-8 shadow-lg w-[25%]">
+        <a href="https://leerlandais.com" class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 py-4 px-8 shadow-lg w-[25%] bg-white bg-opacity-50">
             Visit Home Site
         </a>
     </div>
