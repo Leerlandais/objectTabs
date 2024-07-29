@@ -4,11 +4,17 @@ use model\Manager\ArtistManager;
 use model\Mapping\ArtistMapping;
 use model\Manager\UserManager;
 use model\Mapping\UserMapping;
+use model\Manager\SongManager;
 
 $userManager = new UserManager($db);
 $artistManager = new ArtistManager($db);
+$songManager = new SongManager($db);
 
 $allArtists = $artistManager->selectAll();
+$allSongs = $songManager->selectAll();
+
+
+
 
 // LOGOUT
 if (isset($_GET["logout"])) {

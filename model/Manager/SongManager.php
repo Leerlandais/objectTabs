@@ -31,16 +31,25 @@ class SongManager
     {
         $query = $this->db->query("SELECT * FROM tab_song");
         if ($query->rowCount() === 0) return null;
-        $artMapper = $query->fetchAll();
+        $songMapper = $query->fetchAll();
         $query->closeCursor();
-        $artObject = [];
-        foreach ($artMapper as $art) {
-            $artObject[] = new SongMapping($art);
+        $songObject = [];
+        foreach ($songMapper as $art) {
+            $songObject[] = new SongMapping($art);
         }
-        return $artObject;
+        return $songObject;
     }
-    public function selectOneById ($name) : bool
+    public function selectAllByArtistId ($id) : ?array
     {
-        // to be implemented
+        $stmt = $this->db->prepare("SELECT * FROM tab_song WHERE artist_id = ?");
+        $stmt->execute([$id]);
+        if ($stmt->rowCount() === 0) return null;
+        $songMapper = $stmt->fetchAll();
+        $stmt->closeCursor();
+        $songObject = [];
+        foreach ($songMapper as $art) {
+            $songObject[] = new SongMapping($art);
+        }
+        return $songObject;
     }
 }
