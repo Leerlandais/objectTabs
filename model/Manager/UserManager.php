@@ -22,13 +22,11 @@ class UserManager {
 // ATTEMPT USER LOGIN
     public function login(string $login, string $password) : bool  {
         $login = $this->standardClean($login);
-        $stmt = $this->db->prepare("SELECT * FROM `eco_object_users` WHERE `object_user_login` = :login");
+        $stmt = $this->db->prepare("SELECT * FROM `tab_user` WHERE `tab_user_name` = :login");
         $stmt->execute([':login' => $login]);
         if ($stmt->rowCount() > 0) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (password_verify($password, $user['object_user_pass'])) {
-                $_SESSION = $user;
-                unset($_SESSION['object_user_pass']);
+            if (password_verify($password, $user['tab_user_pwd'])) {
                 $_SESSION["id"] = session_id();
                 return true;
             }

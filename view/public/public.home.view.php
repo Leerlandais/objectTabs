@@ -31,6 +31,7 @@
             Everything I need in one handy spot
         </p>
         <?php
+        if(!isset($_SESSION["id"]) || $_SESSION["id"] !== session_id()) {
         if(!isset($_GET["login"])) {
         ?>
         <a href="?login">
@@ -43,6 +44,7 @@
         </a>
         <?php
         }
+        }
         ?>
     </div>
 </div>
@@ -51,7 +53,7 @@ if (isset($_GET['login'])) {
     ?>
     <div class="flex items-center justify-center w-full dark:bg-gray-950 mb-4">
         <div class="bg-gray-300 dark:bg-gray-900 shadow-md rounded-lg px-8 py-6 max-w-md text-center border border-black">
-            <form action="#">
+            <form action="#" method="post">
                 <div class="mb-4">
                     <label for="username" class="block text-sm font-medium text-black dark:text-gray-300 mb-2">User Name</label>
                     <input type="text" name="username" class="bg-gray-200 shadow-sm text-center rounded-md w-full px-3 py-2 border border-black focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="user name" required>

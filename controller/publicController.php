@@ -17,7 +17,6 @@ $allArtists = $artistManager->selectAll();
 $allSongs = $songManager->selectAll();
 
 
-
 // LOGOUT
 if (isset($_GET["logout"])) {
     $userManager->logout();
@@ -57,11 +56,12 @@ if(isset($_POST["createUserName"],
 }
 
 // ATTEMPT USER LOGIN
-if(isset($_POST["loginUserLogin"],
-         $_POST["loginUserPassword"])) {
-    $name = $_POST["loginUserLogin"];
-    $password = $_POST["loginUserPassword"];
+if(isset($_POST["username"],
+         $_POST["password"])) {
+    $name = $_POST["username"];
+    $password = $_POST["password"];
     $attemptLogin = $userManager->login($name, $password);
+
     if (!$attemptLogin) {
         $_SESSION["errorMessage"] = "Invalid login!";
     }
