@@ -1,14 +1,17 @@
 <?php
 
 use model\Manager\ArtistManager;
-use model\Mapping\ArtistMapping;
+
 use model\Manager\UserManager;
-use model\Mapping\UserMapping;
+
 use model\Manager\SongManager;
+
+use model\Manager\TabManager;
 
 $userManager = new UserManager($db);
 $artistManager = new ArtistManager($db);
 $songManager = new SongManager($db);
+$tabManager = new TabManager($db);
 
 $allArtists = $artistManager->selectAll();
 $allSongs = $songManager->selectAll();
@@ -66,12 +69,24 @@ if(isset($_POST["loginUserLogin"],
 }
 
 // GET SONGS FOR ONE ARTIST
-if(isset($_GET["route"], $_GET["artId"])
-    && $_GET["route"] == "artist"){
+if(isset($_GET["route"])) {
+ switch($_GET["route"]) {
+     case "artist" :
+         $id = $_GET["artId"];
+         $oneArt = $songManager->selectAllByArtistId($id);
+         break;
+     case "song" :
+         $slug = $_GET["songSlug"];
+         $oneSong = $tabManager->selectTabBySlug($slug);
+         break;
+ }
+
+    if ($_GET["route"] == "artist"){
         $id = $_GET["artId"];
         $oneArt = $songManager->selectAllByArtistId($id);
     }
 
+}
 
 $title = "HomePage";
 include PROJECT_DIRECTORY."/view/public/public.home.view.php";

@@ -75,7 +75,7 @@ if (isset($_GET['login'])) {
                 <?php
                 foreach ($oneArt as $art) {
                     ?>
-                    <a href="?route=song&songId=<?=$art->getSongId()?>"><li class="py-1 my-1"><?=html_entity_decode($art->getSongName())?></li></a>
+                    <a href="?route=song&songSlug=<?=$art->getSongSlug()?>"><li class="py-1 my-1"><?=html_entity_decode($art->getSongName())?></li></a>
                     <?php
                 }
                 ?>
@@ -83,6 +83,7 @@ if (isset($_GET['login'])) {
         </div>
     <?php
     }
+    if(isset($oneSong)) var_dump($oneSong);
     ?>
 </body>
 </html>
