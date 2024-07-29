@@ -56,7 +56,7 @@ protected ?string $song_slug = null;
 
     public function setSongSlug(?string $song_slug): void
     {
-        if(!$this->verifyString($song_slug)) throw new Exception("Song slug cannot be empty");  
+        if(!$this->verifyString($song_slug)) throw new Exception("Song slug cannot be empty");
         $this->song_slug = $song_slug;
     }
 
