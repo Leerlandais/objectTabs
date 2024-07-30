@@ -18,7 +18,11 @@ use TraitLaundryRoom;
     }
     public function insert ($name) : bool
     {
-        // to be implemented
+        $stmt = $this->db->prepare("INSERT INTO tab_artist (art_name) VALUES (:name)");
+        $stmt->bindParam(':name', $name);
+        $stmt->execute();
+        if ($stmt->rowCount() == 0) return false;
+        return true;
     }
     public function update ($name) : bool
     {

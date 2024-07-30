@@ -18,5 +18,15 @@ if (isset($_GET["logout"])) {
 }
 $allArtists = $artistManager->selectAll();
 
+if(isset($_POST["artistName"])) {
+    $artistName = $_POST["artistName"];
+    $addArtist = $artistManager->insert($artistName);
+    if($addArtist) {
+        header('Location: /');
+    }else {
+        $errorMessage = "Something went wrong with insert Artist";
+    }
+}
+
 $title = "Admin Only";
 include PROJECT_DIRECTORY.'\view\private\private.home.view.php';
