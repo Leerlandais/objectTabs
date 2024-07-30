@@ -18,6 +18,7 @@ use TraitLaundryRoom;
     }
     public function insert ($name) : bool
     {
+        $name = $this->standardClean($name);
         $stmt = $this->db->prepare("INSERT INTO tab_artist (art_name) VALUES (:name)");
         $stmt->bindParam(':name', $name);
         $stmt->execute();

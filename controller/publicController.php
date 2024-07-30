@@ -78,10 +78,6 @@ if(isset($_GET["route"])) {
          break;
  }
 
-    if ($_GET["route"] == "artist"){
-        $id = $_GET["artId"];
-        $oneArt = $songManager->selectAllByArtistId($id);
-    }
 
 }
 

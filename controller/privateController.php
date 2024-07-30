@@ -28,5 +28,19 @@ if(isset($_POST["artistName"])) {
     }
 }
 
+if(isset($_GET["route"])) {
+    switch ($_GET["route"]) {
+        case "artist" :
+            $id = $_GET["artId"];
+            $oneArt = $songManager->selectAllByArtistId($id);
+            break;
+        case "song" :
+            $slug = $_GET["songSlug"];
+            $oneSong = $tabManager->selectTabBySlug($slug);
+            break;
+    }
+}
+
+
 $title = "Admin Only";
 include PROJECT_DIRECTORY.'\view\private\private.home.view.php';
