@@ -17,10 +17,7 @@ $allArtists = $artistManager->selectAll();
 $allSongs = $songManager->selectAll();
 
 
-// LOGOUT
-if (isset($_GET["logout"])) {
-    $userManager->logout();
-}
+
 
 // CREATE NEW USER
 if(isset($_POST["createUserName"],
