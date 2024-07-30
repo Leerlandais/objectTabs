@@ -4,6 +4,8 @@ use model\Manager\UserManager;
 use model\Manager\TabManager;
 use model\Manager\SongManager;
 use model\Manager\ArtistManager;
+use model\Mapping\SongMapping;
+use model\Mapping\TabMapping;
 
 $userManager = new UserManager($db);
 $tabManager = new TabManager($db);
@@ -26,6 +28,17 @@ if(isset($_POST["artistName"])) {
     }else {
         $errorMessage = "Something went wrong with insert Artist";
     }
+}
+
+if (isset($_POST["songName"],
+        $_POST["songTab"],
+        $_POST["artId"]))
+{
+    $songName = $_POST["songName"];
+    $songTab = $_POST["songTab"];
+    $artId = $_POST["artId"];
+    $addSong = $songManager->insert($songName, $artId);
+    $addTab = $tabManager->addNewTab($songName, $songTab);
 }
 
 if(isset($_GET["route"])) {

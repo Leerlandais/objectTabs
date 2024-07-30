@@ -16,8 +16,19 @@ protected ?int $artist_id = null;
 protected ?string $song_name = null;
 protected ?string $song_slug = null;
     protected ?string $art_name;
+    protected ?int $art_id = null;
 
- // Assuming art_name is of type ArtistMapping
+    public function getArtId(): ?int
+    {
+        return $this->art_id;
+    }
+
+    public function setArtId(?int $art_id): void
+    {
+        $this->art_id = $art_id;
+    }
+
+
 
     public function getArtName(): ?string {
         return $this->art_name;

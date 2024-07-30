@@ -8,17 +8,28 @@ use model\MyPDO;
 use PDO;
 use PDOException;
 use model\Trait\TraitLaundryRoom;
+use model\Trait\TraitSlugify;
 
 class SongManager
 {
-    use TraitLaundryRoom;
+    use TraitLaundryRoom, TraitSlugify;
     private MyPDO $db;
     public function __construct(MyPDO $db) {
         $this->db = $db;
     }
-    public function insert ($name) : bool
+    public function insert ($name, $id) : bool
     {
-        // to be implemented
+        $name = $this->standardClean($name);
+        $slug = $this->slugify($name);
+        $id = $this->intClean($id);
+
+        $stmt = $this->db->prepare("INSERT INTO tab_song (song_name, song_slug, artist_id) VALUES (:name, :slug, :id)");
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':slug', $slug);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        if ($stmt->rowCount() === 0) return false;
+        return true;
     }
     public function update ($name) : bool
     {
@@ -43,7 +54,7 @@ class SongManager
     public function selectAllByArtistId ($id) : ?array
     {
         $stmt = $this->db->prepare("
-                                    SELECT s.*, a.art_name 
+                                    SELECT s.*, a.art_name, a.art_id 
                                     FROM tab_song s 
                                     JOIN tab_artist a 
                                     ON s.artist_id = a.art_id
