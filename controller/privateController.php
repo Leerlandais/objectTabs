@@ -12,6 +12,13 @@ $tabManager = new TabManager($db);
 $songManager = new SongManager($db);
 $artistManager = new ArtistManager($db);
 
+// CHECK SESSION ACTIVITY OR LOGOUT AUTOMATICALLY
+if (isset($_SESSION["active"]) && time() - $_SESSION["active"] > 10) {
+    // $_SESSION["errorMessage"] = "Session Timed Out. Please log back in to access that page"; // This, of course, won't work as logout() destroys all Session information
+    $userManager->logout();
+    exit();
+}
+$_SESSION["active"] = time();
 
 
 // LOGOUT
